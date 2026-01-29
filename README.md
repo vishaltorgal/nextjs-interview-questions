@@ -7,7 +7,7 @@
 4. [What is Incremental Static Regeneration?](#4-what-is-incremental-static-regeneration)
 5. [How does routing works in Nextjs?](#5-how-does-routing-works-in-nextjs)
 6. [What are API Routes?](#6-what-are-api-routes)
-7. [Difference between getStaticProps and getServerSideProps](#7-difference-between-getstaticprops-and-getderversideprops)
+7. [Difference between getStaticProps and getServerSideProps](#7-difference-between-getstaticprops-and-getserversideprops)
 8. [How does Nextjs improve performance?](#8-how-does-nextjs-improve-performance)
 
 
@@ -81,7 +81,7 @@ export default function handler(req, res) {
 | SEO      | Good                 | Good                   |
 | Use case | Blogs, landing pages | Dashboards, auth pages |
 
-## 7. **How does Nextjs improve performance**
+## 8. **How does Nextjs improve performance**
 - Code splitting
 - Image optimization
 - Pre-fetching pages

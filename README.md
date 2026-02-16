@@ -10,8 +10,7 @@
 7. [What are API Routes?](#7-what-are-api-routes)
 8. [Difference between getStaticProps and getServerSideProps](#8-difference-between-getstaticprops-and-getserversideprops)
 9. [How does Nextjs improve performance?](#9-how-does-nextjs-improve-performance)
-
-
+10. [CSR vs SSR vs SSG](#10-csr-vs-ssr-vs-ssg)
 
 ## 1. **What are the rendering methods in Nextjs?**
 
@@ -134,9 +133,40 @@ Server converts it into:
 | Who builds HTML?             | Server          | Browser         |
 
 
-## 3. **Server Side Rendering?**
+## 3. **Server Side Rendering**
 
-## 4. **Static Site Generation?**
+- 👉 The browser builds the page using JavaScript.
+- 👉 Server sends minimal HTML.
+- 👉 UI is generated in the browser.
+
+### What Happens Next
+
+- Browser downloads JavaScript
+- React runs in browser
+- API call is made
+- Data is fetched as JSON
+- React builds HTML dynamically
+- User finally sees content
+
+### Real Life Example
+
+Imagine online dashboard like company admin panel.
+
+`When you log in:`
+- Page loads
+- Spinner appears
+- Data loads after few seconds
+- Then content shows
+- That is CSR.
+
+### When CSR Is Good
+
+- ✅ Highly interactive apps
+- ✅ Real time dashboards
+- ✅ After login applications
+- ✅ Apps where SEO does not matter
+
+## 4. **Static Site Generation**
 
 - 👉 HTML pages are generated at build time, not at request time.
 - 👉 The pages are prebuilt and stored as static files.
@@ -218,3 +248,18 @@ export default function handler(req, res) {
 - Static generation
 - Edge middleware
 
+<br>
+
+## 10. **CSR vs SSR vs SSG**
+
+| Feature                     | CSR (Client Side Rendering) | SSR (Server Side Rendering) | SSG (Static Site Generation) |
+| --------------------------- | --------------------------- | --------------------------- | ---------------------------- |
+| **Where HTML is generated** | Browser                     | Server                      | Build time                   |
+| **When HTML is generated**  | After page loads            | On every request            | During project build         |
+| **What server sends**       | Empty HTML + JS             | Fully rendered HTML         | Prebuilt HTML file           |
+| **Initial Load Speed**      | Slower                      | Fast                        | Very Fast                    |
+| **SEO**                     | Weak by default             | Strong                      | Excellent                    |
+| **Server Work**             | Low                         | High                        | Very Low                     |
+| **API Calls happen**        | In browser                  | On every request (server)   | During build                 |
+| **Best for**                | Dashboards, internal apps   | E-commerce, news            | Blogs, marketing sites       |
+| **Content freshness**       | Always latest               | Always latest               | Static until rebuild         |

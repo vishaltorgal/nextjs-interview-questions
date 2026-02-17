@@ -395,3 +395,9 @@ export default function BlogPost() {
   return <h1>Blog ID: {id}</h1>;
 }
 ```
+
+### ⚠️ When to Use Pages Router?
+
+- Working on older project
+- Migration not done yet
+- Need traditional React style routing

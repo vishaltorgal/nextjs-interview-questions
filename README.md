@@ -11,6 +11,8 @@
 8. [Difference between getStaticProps and getServerSideProps](#8-difference-between-getstaticprops-and-getserversideprops)
 9. [How does Nextjs improve performance?](#9-how-does-nextjs-improve-performance)
 10. [CSR vs SSR vs SSG](#10-csr-vs-ssr-vs-ssg)
+11. [App Router](#11-app-router)
+12. [Page Router](#12-page-router)
 
 ## 1. **What are the rendering methods in Nextjs?**
 
@@ -133,7 +135,7 @@ Server converts it into:
 | Who builds HTML?             | Server          | Browser         |
 
 
-## 3. **Server Side Rendering**
+## 3. **Client Side Rendering**
 
 - 👉 The browser builds the page using JavaScript.
 - 👉 Server sends minimal HTML.
@@ -263,3 +265,133 @@ export default function handler(req, res) {
 | **API Calls happen**        | In browser                  | On every request (server)   | During build                 |
 | **Best for**                | Dashboards, internal apps   | E-commerce, news            | Blogs, marketing sites       |
 | **Content freshness**       | Always latest               | Always latest               | Static until rebuild         |
+
+
+## 11. **App Router**
+
+App Router provides Hierarchical File Structure routing. which provides features such as shared layout, nested routing, loading states, error handling, 404 not found page, and many more.
+
+
+### Reserved File Names:
+
+| File            | Purpose       |
+| --------------- | ------------- |
+| `layout.tsx`    | Shared layout |
+| `page.tsx`      | Route page    |
+| `loading.tsx`   | Loading UI    |
+| `error.tsx`     | Error UI      |
+| `not-found.tsx` | 404 page      |
+| `route.ts`      | API route     |
+
+
+### 📁 Basic Folder Structure
+```jsx
+my-app/
+ ├─ app/
+ │   ├─ page.tsx        → Home page (/)
+ │   ├─ layout.tsx      → Shared layout
+ │   ├─ about/
+ │   │    └─ page.tsx   → /about
+ │   └─ blog/
+ │        └─ [id]/
+ │             └─ page.tsx → /blog/123
+```
+
+### 🔹 1. page.tsx → Defines a Route
+```jsx
+// app/about/page.tsx
+export default function AboutPage() {
+  return <h1>About Page</h1>;
+}
+
+//localhost:3000/about
+```
+
+### 🔹 2. layout.tsx → Shared Layout
+```jsx
+// app/layout.tsx
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <nav>Navbar</nav>
+        {children}
+      </body>
+    </html>
+  );
+}
+
+```
+
+- ✔ Navbar will appear on all pages
+- ✔ Layouts can be nested
+
+### 🔹 3. Dynamic Routes
+
+```jsx
+app/blog/[id]/page.tsx
+```
+```jsx
+export default function BlogPost({ params }) {
+  return <h1>Blog ID: {params.id}</h1>;
+}
+```
+***URL***
+```jsx
+/blog/123
+```
+## 11. **Page Router**
+
+- The Pages Router is the older routing system used in Next.js before the App Router (Next.js 13).
+- It is based on the pages/ folder.
+- If you create a file inside pages/, it automatically becomes a route.
+
+### 📁 Basic Folder Structure
+
+```jsx
+my-app/
+ ├─ pages/
+ │   ├─ index.tsx        → /
+ │   ├─ about.tsx        → /about
+ │   ├─ blog/
+ │   │    └─ [id].tsx    → /blog/123
+ │   └─ api/
+ │        └─ hello.ts    → /api/hello
+```
+
+### 🔹 1️⃣ Basic Route
+```jsx
+// pages/about.tsx
+export default function About() {
+  return <h1>About Page</h1>;
+}
+```
+URL:
+```jsx
+localhost:3000/about
+```
+
+### 🔹 2️⃣ Home Page
+```jsx
+// pages/index.tsx
+export default function Home() {
+  return <h1>Home Page</h1>;
+}
+```
+index.tsx = root route /
+
+### 🔹 3️⃣ Dynamic Routes
+```jsx
+pages/blog/[id].tsx
+```
+
+```jsx
+import { useRouter } from "next/router";
+
+export default function BlogPost() {
+  const router = useRouter();
+  const { id } = router.query;
+
+  return <h1>Blog ID: {id}</h1>;
+}
+```

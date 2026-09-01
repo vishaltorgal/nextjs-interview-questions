@@ -233,6 +233,8 @@ Next.js uses file-based routing.
 
 API Routes allow creating backend endpoints inside the Next.js app.
 
+Frontend → API Route → Backend logic → Response
+
 ```jsx
 export default function handler(req, res) {
   res.status(200).json({ message: "Hello API" })

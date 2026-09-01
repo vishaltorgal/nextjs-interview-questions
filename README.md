@@ -215,7 +215,9 @@ export async function getStaticProps() {
 }
 
 ```
-***Data changes occasionally***
+
+***ISR is useful when:***
+- Data changes occasionally
 - You want fast page loads
 - You don't want to rebuild the entire site
 - You want SEO-friendly static HTML

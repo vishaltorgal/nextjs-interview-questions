@@ -215,6 +215,10 @@ export async function getStaticProps() {
 }
 
 ```
+***Data changes occasionally***
+- You want fast page loads
+- You don't want to rebuild the entire site
+- You want SEO-friendly static HTML
 
 ## 6. **How does routing works in Nextjs?**
 

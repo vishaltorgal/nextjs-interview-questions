@@ -22,6 +22,21 @@ Next.js supports multiple rendering strategies
 - ISR (Incremental Static Regeneration) updates static pages after build
 - CSR (Client Side Rendering) renders in the browser
 
+
+| Rendering                             | When to use                                  | Why to use                                                                     | Example project                                         |
+| ------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| SSR (Server-Side Rendering)           | When data needs to be fresh for each request | Generates HTML on the server for every request; supports request-specific data | Banking dashboard, personalized account page            |
+| SSG (Static Site Generation)          | When content rarely changes                  | Generates pages at build time; fast loading and SEO-friendly                   | Portfolio, blog, documentation website                  |
+| ISR (Incremental Static Regeneration) | When content changes occasionally            | Updates cached static content without rebuilding the entire site               | Job portal, e-commerce product pages, news website      |
+| CSR (Client-Side Rendering)           | When the page needs high interactivity       | Renders or updates UI in the browser using JavaScript                          | Admin dashboard, analytics dashboard, interactive tools |
+
+Interview shortcut:
+
+- `Server-Side Rendering`: Render on every request.
+- `Static Site Generation`: Render at build time.
+- `Incremental Static Regeneration`: Static pages with periodic revalidation.
+- `Client-Side Rendering`: Render or update UI in the browser.
+- 
 ## 2. **Server Side Rendering?**
 
 `How SSR Works`
@@ -31,6 +46,7 @@ Next.js supports multiple rendering strategies
 - Server generates complete HTML.
 - Browser receives ready to display page.
 
+  
 ```jsx
 export async function getServerSideProps() {
   return { props: { data: "Hello" } }

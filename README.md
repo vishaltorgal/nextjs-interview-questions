@@ -10,7 +10,7 @@
 7. [What are API Routes?](#7-what-are-api-routes)
 8. [Difference between getStaticProps and getServerSideProps](#8-difference-between-getstaticprops-and-getserversideprops)
 9. [How does Nextjs improve performance?](#9-how-does-nextjs-improve-performance)
-10. [CSR vs SSR vs SSG](#10-csr-vs-ssr-vs-ssg)
+10. [CSR vs SSR vs SSG vs ISR](#10-csr-vs-ssr-vs-ssg-isr)
 11. [App Router](#11-app-router)
 12. [Page Router](#12-page-router)
 
@@ -276,19 +276,19 @@ export default function handler(req, res) {
 
 <br>
 
-## 10. **CSR vs SSR vs SSG**
+## 10. **CSR vs SSR vs SSG vs ISR**
 
-| Feature                     | CSR (Client Side Rendering) | SSR (Server Side Rendering) | SSG (Static Site Generation) |
-| --------------------------- | --------------------------- | --------------------------- | ---------------------------- |
-| **Where HTML is generated** | Browser                     | Server                      | Build time                   |
-| **When HTML is generated**  | After page loads            | On every request            | During project build         |
-| **What server sends**       | Empty HTML + JS             | Fully rendered HTML         | Prebuilt HTML file           |
-| **Initial Load Speed**      | Slower                      | Fast                        | Very Fast                    |
-| **SEO**                     | Weak by default             | Strong                      | Excellent                    |
-| **Server Work**             | Low                         | High                        | Very Low                     |
-| **API Calls happen**        | In browser                  | On every request (server)   | During build                 |
-| **Best for**                | Dashboards, internal apps   | E-commerce, news            | Blogs, marketing sites       |
-| **Content freshness**       | Always latest               | Always latest               | Static until rebuild         |
+| Feature                 | CSR (Client Side Rendering)               | SSR (Server Side Rendering)                  | SSG (Static Site Generation) | ISR (Incremental Static Regeneration)                   |
+| ----------------------- | ----------------------------------------- | -------------------------------------------- | ---------------------------- | ------------------------------------------------------- |
+| Where HTML is generated | Browser                                   | Server                                       | Build time                   | Server, during initial generation or regeneration       |
+| When HTML is generated  | After page loads                          | On every request                             | During project build         | At build time or on demand, then revalidated            |
+| What server sends       | HTML shell + JS (typically)               | Fully rendered HTML                          | Prebuilt HTML file           | Cached, pre-rendered HTML                               |
+| Initial Load Speed      | Can be slower                             | Fast                                         | Very fast                    | Very fast for cached pages                              |
+| SEO                     | Requires care; can be SEO-friendly        | Strong                                       | Excellent                    | Excellent                                               |
+| Server Work             | Low for rendering                         | High                                         | Very low at request time     | Low for cached requests; extra work during regeneration |
+| API Calls happen        | In browser                                | On the server per request, if needed         | During build, if needed      | During initial generation or revalidation, if needed    |
+| Best for                | Dashboards, internal apps                 | Personalized pages, frequently changing data | Blogs, marketing sites       | Job portals, product pages, news sites                  |
+| Content freshness       | Can fetch latest data from the client API | Fresh per request when uncached              | Static until rebuilt         | Updated through periodic or on-demand revalidation      |
 
 
 ## 11. **App Router**

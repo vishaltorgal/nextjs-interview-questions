@@ -77,6 +77,8 @@ The server takes your React code and produces ordinary HTML from it.
 ```
 This conversion from React components into HTML is what we mean by server-side rendering.
 
+<br>
+
 ### Restaurant Example 🍽️
 
 Imagine you go to a restaurant.

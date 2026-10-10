@@ -36,7 +36,7 @@ Interview shortcut:
 - `Static Site Generation`: Render at build time.
 - `Incremental Static Regeneration`: Static pages with periodic revalidation.
 - `Client-Side Rendering`: Render or update UI in the browser.
-- 
+  
 ## 2. **Server Side Rendering?**
 
 `How SSR Works`

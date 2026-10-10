@@ -10,7 +10,7 @@
 7. [What are API Routes?](#7-what-are-api-routes)
 8. [Difference between getStaticProps and getServerSideProps](#8-difference-between-getstaticprops-and-getserversideprops)
 9. [How does Nextjs improve performance?](#9-how-does-nextjs-improve-performance)
-10. [CSR vs SSR vs SSG vs ISR](#10-csr-vs-ssr-vs-ssg-isr)
+10. [CSR vs SSR vs SSG vs ISR](#10-csr-vs-ssr-vs-ssg-vs-isr)
 11. [App Router](#11-app-router)
 12. [Page Router](#12-page-router)
 

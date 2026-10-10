@@ -54,6 +54,29 @@ export async function getServerSideProps() {
 ```
 <br>
 
+### How Server Coverts HTML
+`Step 1`: You write React code
+
+```jsx
+function App() {
+  const name = "Vishal";
+
+  return <h1>Hello {name}</h1>;
+}
+```
+
+`Step 2`: What does "server generates HTML" mean?
+The server takes your React code and produces ordinary HTML from it.
+
+```jsx
+<h1>Hello {name}</h1>
+```
+
+```jsx
+<h1>Hello Vishal</h1>
+```
+This conversion from React components into HTML is what we mean by server-side rendering.
+
 ### Restaurant Example 🍽️
 
 Imagine you go to a restaurant.
